@@ -29,12 +29,11 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.add-form {
-  input {
-    margin-right: 15px;
-  }
+<style scoped>
+.add-form input {
+  margin-right: 15px;
 }
+
 .people-wrap {
   margin-top: 20px;
   display: grid;
@@ -45,17 +44,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .name {
-    font-size: 18px;
-    font-weight: 700;
-  }
-  .email {
-    font-size: 14px;
-    color: grey;
-  }
-  .dep {
-    color: rgb(159, 122, 234);
-  }
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.email {
+  font-size: 14px;
+  color: grey;
+}
+.dep {
+  color: rgb(159, 122, 234);
 }
 .avatar {
   display: flex;
