@@ -1,14 +1,6 @@
 {
   "people": [
     {
-      "id": 1,
-      "name": "Zaria Monahan",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/gusoto/128.jpg",
-      "phone": "109-433-7524",
-      "email": "Barton41@yahoo.com",
-      "department": "Engineering"
-    },
-    {
       "id": 2,
       "name": "Dr. Aida Monahan",
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/andrewabogado/128.jpg",
@@ -17,28 +9,12 @@
       "department": "Customer Support"
     },
     {
-      "id": 3,
-      "name": "Hollis Armstrong",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/malgordon/128.jpg",
-      "phone": "912-529-8531",
-      "email": "Alexandria33@yahoo.com",
-      "department": "Engineering"
-    },
-    {
       "id": 4,
       "name": "Claudine White",
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/luxe/128.jpg",
       "phone": "840-042-6276 x773",
       "email": "Kennedy_Marvin@hotmail.com",
       "department": "Customer Support"
-    },
-    {
-      "id": 5,
-      "name": "Fleta Fahey",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/rmlewisuk/128.jpg",
-      "phone": "731.613.2439",
-      "email": "Tremaine_Herzog@gmail.com",
-      "department": "Sales"
     },
     {
       "id": 6,
@@ -805,6 +781,12 @@
       "name": "test",
       "email": "Barton41@yahoo.com",
       "department": "Engineering"
+    },
+    {
+      "name": "Alaa",
+      "email": "alaklay@gmail.com",
+      "department": "Engineering",
+      "id": 105
     }
   ]
 }

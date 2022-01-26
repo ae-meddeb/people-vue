@@ -1,71 +1,96 @@
 <template>
   <div class="home">
     <div class="add-form card">
-      <form>
-        <input type="text" placeholder="Name" required />
-        <input type="email" placeholder="Email" required />
-        <input type="button" value="Save" />
+      <form @submit.prevent="handleSubmit">
+        <input v-model="newPeople.name" type="text" placeholder="Name" required />
+        <input v-model="newPeople.email" type="email" placeholder="Email" required />
+        <select v-model="newPeople.department" required>
+          <option v-for="dep in departments" :value="dep" :key="dep">
+            {{ dep }}
+          </option>
+        </select>
+        <input type="submit" value="Save" />
       </form>
     </div>
     <div class="people-wrap">
-      <div class="people-card card">
-        <div class="avatar">A</div>
-        <div class="name">Alaa</div>
-        <div class="email">alaa@gmail.com</div>
-        <div class="dep">Engineering</div>
-      </div>
+      <People v-for="people in peoples" :key="people.id" :p="people" @deleted="handleDelete"/>
     </div>
   </div>
 </template>
 
 <script>
+import People from './People.vue';
+const url = "http://localhost:3000/people";
+function getPeople() {
+  return fetch(url)
+    .then(res => res.json());
+}
+function addPeople(people) {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(people)
+  });
+}
+function deletePeople(peopleId) {
+  return fetch(`${url}/${peopleId}`, {
+    method: 'DELETE'
+  });
+}
 export default {
   name: "Home",
+  components: {
+    People
+  },
   data() {
     return {
       departments: ["Customer Support", "Engineering", "Sales"],
+      peoples: [],
+      newPeople: {}
     };
   },
+  created() {
+    getPeople()
+    .then(data => {
+      this.peoples = data;
+    })
+  },
+  methods: {
+    handleSubmit() {
+      const id = Math.max(...this.peoples.map(p => p.id)) + 1;
+      const people = {...this.newPeople, id};
+
+      addPeople(people)
+        .then(() => {
+          this.peoples.unshift(people);
+          this.newPeople = {};
+        })
+      
+    },
+
+    handleDelete(id) {
+      deletePeople(id)
+      .then(() =>{
+        this.peoples = this.peoples.filter(people => people.id !== id);
+      })
+    }
+  }
 };
 </script>
 
 <style scoped>
-.add-form input {
+.add-form input, .add-form select {
   margin-right: 15px;
 }
 
 .people-wrap {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap:20px;
 }
 
-.people-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.name {
-  font-size: 18px;
-  font-weight: 700;
-}
-.email {
-  font-size: 14px;
-  color: grey;
-}
-.dep {
-  color: rgb(159, 122, 234);
-}
-.avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: lightblue;
-  color: white;
-  font-size: 24px;
-}
 </style>

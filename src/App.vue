@@ -43,7 +43,7 @@ body {
   background: #fff;
 }
 
-input {
+input, select, button {
   height: 26px;
   padding: 0 10px;
 }
