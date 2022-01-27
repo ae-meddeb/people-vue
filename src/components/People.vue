@@ -1,27 +1,68 @@
 <template>
+  <form @submit.prevent="saveChanges">
     <div class="people-card card">
-        <div class="avatar">{{p.name && p.name.charAt(0)}}</div>
-        <div class="name">{{p.name}}</div>
-        <div class="email">{{p.email}}</div>
-        <div class="dep">{{p.department}}</div>
-        <div>
-          <button>Edit</button>
-          <button @click="handleDelete(p.id)">Delete</button>
-        </div>
+      <div class="avatar">{{ avatar }}</div>
+      <div v-if="!editMode" class="name">{{ people.name }}</div>
+      <input
+        v-else
+        v-model="newPeople.name"
+        type="text"
+        placeholder="Name"
+        required
+      />
+      <div v-if="!editMode" class="email">{{ people.email }}</div>
+      <input
+        v-else
+        v-model="newPeople.email"
+        type="email"
+        placeholder="Email"
+        required
+      />
+      <div v-if="!editMode" class="dep">{{ people.department }}</div>
+      <DepartmentSelect v-else v-model="newPeople.department" />
+      <div v-if="editMode">
+        <button>Save</button>
+        <button type="button" @click="editMode = !editMode">Cancel</button>
       </div>
+      <div v-else>
+        <button type="button" @click="editMode = !editMode">Edit</button>
+        <button type="button" @click="handleDelete(people.id)">Delete</button>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script>
+import DepartmentSelect from "./DepartmentSelect.vue";
+
 export default {
-    props: {
-        p: Object
+  components: {
+    DepartmentSelect,
+  },
+  props: {
+    people: Object,
+  },
+  data() {
+    return {
+      editMode: false,
+      newPeople: this.people,
+    };
+  },
+  computed: {
+    avatar() {
+      return this.people?.name.charAt(0);
     },
-    methods: {
-        handleDelete(id) {
-            this.$emit('deleted', id);
-        }
-    }
-}
+  },
+  methods: {
+    handleDelete(id) {
+      this.$emit("deleted", id);
+    },
+    saveChanges() {
+      this.editMode = false;
+      this.$emit("edited", this.newPeople);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -53,5 +94,8 @@ export default {
   background: lightblue;
   color: white;
   font-size: 24px;
+}
+button + button {
+  margin-left: 5px;
 }
 </style>

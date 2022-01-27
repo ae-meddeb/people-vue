@@ -1,44 +1,12 @@
 {
   "people": [
     {
-      "id": 2,
-      "name": "Dr. Aida Monahan",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/andrewabogado/128.jpg",
-      "phone": "557-733-3418 x89343",
-      "email": "Rosella58@yahoo.com",
-      "department": "Customer Support"
-    },
-    {
-      "id": 4,
-      "name": "Claudine White",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/luxe/128.jpg",
-      "phone": "840-042-6276 x773",
-      "email": "Kennedy_Marvin@hotmail.com",
-      "department": "Customer Support"
-    },
-    {
-      "id": 6,
-      "name": "Theodora Grant",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/russell_baylis/128.jpg",
-      "phone": "(939) 836-7696 x1436",
-      "email": "Alejandrin_Kris@gmail.com",
-      "department": "Sales"
-    },
-    {
-      "id": 7,
-      "name": "Mrs. Carey Bayer",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/russell_baylis/128.jpg",
-      "phone": "(577) 588-9309 x61721",
-      "email": "Nicklaus_Doyle@gmail.com",
-      "department": "Sales"
-    },
-    {
       "id": 8,
-      "name": "Osvaldo Kuvalis",
+      "name": "Osvaldo Kuvaliss",
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/olgary/128.jpg",
       "phone": "(281) 477-9703 x595",
-      "email": "Glen20@yahoo.com",
-      "department": "Sales"
+      "email": "Glen@yahoo.com",
+      "department": "Customer Support"
     },
     {
       "id": 9,
@@ -787,6 +755,11 @@
       "email": "alaklay@gmail.com",
       "department": "Engineering",
       "id": 105
+    },
+    {
+      "name": "Sofi",
+      "email": "sofi@gg.cc",
+      "id": 106
     }
   ]
 }
